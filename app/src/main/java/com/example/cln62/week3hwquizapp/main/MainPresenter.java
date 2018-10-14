@@ -14,20 +14,24 @@ public class MainPresenter implements MainContract.Presenter, TodoDataSource.Tod
         todoRepository = new TodoRepository(mainActivity);
     }
 
-
     @Override
-    public void getQuesAndAns() {
-        todoRepository.getQuesAndAnsFromDB(this);
+    public void getQuesAndAns(int cursorPosition) {
+        todoRepository.getQuesAndAnsFromDB(this, cursorPosition);
     }
 
     @Override
-    public void Initializer() {
+    public void initializer() {
         todoRepository.dbInitializer();
     }
 
     @Override
-    public void move2NewRecord() {
-        todoRepository.getPrevQuesAndAnsFromDB(this);
+    public void positionIncrease() {
+        view.positionIncreaseComfirm();
+    }
+
+    @Override
+    public void positionDecrease() {
+        view.positionDecreaseComfirm();
     }
 
     @Override

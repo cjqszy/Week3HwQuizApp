@@ -14,13 +14,14 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     TextView question;
     CheckBox checkBox1, checkBox2, checkBox3, checkBox4;
     MainPresenter mainPresenter;
+    int cursorPosition = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mainPresenter = new MainPresenter(this);
-        mainPresenter.Initializer();
+        mainPresenter.initializer();
 
         question = findViewById(R.id.questionTextView);
         checkBox1 = findViewById(R.id.checkBox);
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         checkBox3 = findViewById(R.id.checkBox3);
         checkBox4 = findViewById(R.id.checkBox4);
 
-        mainPresenter.getQuesAndAns();
+        mainPresenter.getQuesAndAns(cursorPosition);
 
     }
 
@@ -41,13 +42,28 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         checkBox4.setText(todonote.getAnswer4());
     }
 
+    @Override
+    public void positionIncreaseComfirm() {
+        cursorPosition++;
+    }
+
+    @Override
+    public void positionDecreaseComfirm() {
+        if (cursorPosition == 0) {
+            return;
+        }
+        cursorPosition--;
+    }
+
     public void buttonListener(View view) {
         switch (view.getId()) {
             case R.id.nextButton:
-                mainPresenter.move2NewRecord();
+                mainPresenter.positionIncrease();
+                mainPresenter.getQuesAndAns(cursorPosition);
                 break;
             case R.id.prevButton:
-                mainPresenter.getQuesAndAns();
+                mainPresenter.positionDecrease();
+                mainPresenter.getQuesAndAns(cursorPosition );
                 break;
         }
     }

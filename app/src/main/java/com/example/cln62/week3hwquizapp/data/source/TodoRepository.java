@@ -18,12 +18,8 @@ public class TodoRepository implements TodoDataSource {
     }
 
     @Override
-    public void getQuesAndAnsFromDB(TodoNoteCallBack callBack) {
-        dataSourceDao.getQuesAndAnsFromDB(callBack);
+    public void getQuesAndAnsFromDB(TodoNoteCallBack callBack, int cursorPosition) {
+        dataSourceDao.getQuesAndAnsFromDB(callBack, cursorPosition);
     }
 
-    @Override
-    public void getPrevQuesAndAnsFromDB(TodoNoteCallBack callBack) {
-        dataSourceDao.getPrevQuesAndAnsFromDB(callBack);
-    }
 }

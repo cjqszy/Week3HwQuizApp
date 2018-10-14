@@ -15,6 +15,12 @@ public final class QuestionAnswerContract {
         public static final String ANSWER2_2 = "China";
         public static final String ANSWER2_3 = "USA";
         public static final String ANSWER2_4 = "India";
+        public static final String QUESTION3 = "Which countries are American countries ?";
+        public static final String ANSWER3_1 = "USA";
+        public static final String ANSWER3_2 = "Nepal";
+        public static final String ANSWER3_3 = "Mexico";
+        public static final String ANSWER3_4 = "Russia";
+
 
 
 

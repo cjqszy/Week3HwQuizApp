@@ -6,13 +6,19 @@ public interface MainContract {
     
     interface View{
         public void showQuesAndAns(TodoNote todonote);
+
+        void positionIncreaseComfirm();
+
+        void positionDecreaseComfirm();
     };
     
     interface Presenter{
-        void getQuesAndAns();
+        void getQuesAndAns(int cursorPosition);
 
-        void Initializer();
+        void initializer();
 
-        void move2NewRecord();
+        void positionIncrease();
+
+        void positionDecrease();
     };
 }
